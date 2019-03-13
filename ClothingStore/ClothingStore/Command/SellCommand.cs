@@ -11,7 +11,7 @@ namespace ClothingStore.Command
         private string cmd_product;
         private int cmd_color;
         private int cmd_size;
-        private int total_proice = 0;
+        private int total_price = 0;
 
 
         /*
@@ -23,6 +23,7 @@ namespace ClothingStore.Command
             Console.WriteLine("Select product type:");
             Console.WriteLine("A: T-Shirt ");
             Console.WriteLine("B: Dress Shirt ");
+            Console.WriteLine("R: Back to main ");
 
 
         }
@@ -35,8 +36,7 @@ namespace ClothingStore.Command
             Console.WriteLine("Select color :");
             Console.WriteLine("1: Red ");
             Console.WriteLine("2: Blue ");
-
-
+            Console.WriteLine("0: Back to main ");
         }
 
         /*
@@ -47,8 +47,7 @@ namespace ClothingStore.Command
             Console.WriteLine("Select size :");
             Console.WriteLine("1: S ");
             Console.WriteLine("2: M ");
-
-
+            Console.WriteLine("0: Back to main ");
         }
 
 
@@ -62,7 +61,7 @@ namespace ClothingStore.Command
 
             bool invalid = false;
 
-            int type_product = 0;
+            int type_product = 1;
 
             // perform each command based on user input
             switch (cmd_product)
@@ -74,6 +73,11 @@ namespace ClothingStore.Command
 
                 case "B":
                     type_product = 2;
+                    break;
+                case "R":
+                    InventorySystem sys = new InventorySystem();
+                    sys.PrintWelcome();
+                    sys.RequestCommand();
                     break;
 
                 default:
@@ -110,6 +114,11 @@ namespace ClothingStore.Command
                 case 2:
                     type_color = 2;
                     break;
+                case 0:
+                    InventorySystem sys = new InventorySystem();
+                    sys.PrintWelcome();
+                    sys.RequestCommand();
+                    break;
 
                 default:
                     invalid = true;
@@ -143,6 +152,11 @@ namespace ClothingStore.Command
 
                 case 2:
                     type_size = 2;
+                    break;
+                case 0:
+                    InventorySystem sys = new InventorySystem();
+                    sys.PrintWelcome();
+                    sys.RequestCommand();
                     break;
 
                 default:
@@ -246,7 +260,6 @@ namespace ClothingStore.Command
         public void Run()
         {
             ConsoleKeyInfo cki;
-
             do
             {
                 PrintMenuProduct();
@@ -256,9 +269,9 @@ namespace ClothingStore.Command
                 PrintMenuSize();
                 int size = RunCommandSelectSizeType();
                 int price = PrintPrice(product);
-                total_proice = total_proice + price;
+                total_price = total_price + price;
                 PrintProduct(product, color, size);
-                Console.WriteLine("Total Price: {0)", total_proice);
+                Console.WriteLine("\nTotal Price: {0}", total_price);
                 cki = Console.ReadKey(false);
             }
             while (cki.Key != ConsoleKey.Escape);

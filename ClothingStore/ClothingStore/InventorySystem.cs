@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClothingStore.Command;
+using System.Threading;
 
 namespace ClothingStore
 {
@@ -24,7 +25,7 @@ namespace ClothingStore
         /*
         * print welcome messsage
         */
-        private void PrintWelcome()
+        public void PrintWelcome()
         {
             Console.WriteLine("Welcome to Clothing Management System");
             Console.WriteLine("Please select function:");
@@ -36,30 +37,30 @@ namespace ClothingStore
         /*
         * execute commands according with user 
         */
-        private void RequestCommand()
+        public void RequestCommand()
         {
-            int.TryParse( Console.ReadLine(), out parameters);
+            int.TryParse(Console.ReadLine(), out parameters);
 
             bool quit = false;
 
             // perform each command based on user input
             switch (parameters)
             {
-                
+
                 case 1:
                     BuyCommand buy = new BuyCommand();
                     buy.Run();
                     break;
-                
+
                 case 2:
                     SellCommand sell = new SellCommand();
                     sell.Run();
-                    break;                
+                    break;
                 case 3:
                     Quit();
                     quit = true;
                     break;
-               
+
                 default:
                     Console.WriteLine("Command {0} is not recongnized. Please try again.", parameters);
                     break;
@@ -78,7 +79,7 @@ namespace ClothingStore
         {
             try
             {
-                if (parameters == 1 || parameters ==2 || parameters==3)
+                if (parameters == 1 || parameters == 2 || parameters == 3)
                 {
                     return true;
                 }
@@ -98,6 +99,8 @@ namespace ClothingStore
         public void Quit()
         {
             Console.WriteLine("Thank you for using Clothing Management System");
+            Thread.Sleep(3000);
+            Environment.Exit(0);
         }
     }
 }

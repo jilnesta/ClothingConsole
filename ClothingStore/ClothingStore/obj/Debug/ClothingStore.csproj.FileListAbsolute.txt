@@ -3,3 +3,9 @@ S:\Project\Test\ClothingStore\ClothingStore\bin\Debug\ClothingStore.exe
 S:\Project\Test\ClothingStore\ClothingStore\bin\Debug\ClothingStore.pdb
 S:\Project\Test\ClothingStore\ClothingStore\obj\Debug\ClothingStore.exe
 S:\Project\Test\ClothingStore\ClothingStore\obj\Debug\ClothingStore.pdb
+S:\Project\Git\ClothingConsole\ClothingStore\ClothingStore\bin\Debug\ClothingStore.exe.config
+S:\Project\Git\ClothingConsole\ClothingStore\ClothingStore\bin\Debug\ClothingStore.exe
+S:\Project\Git\ClothingConsole\ClothingStore\ClothingStore\bin\Debug\ClothingStore.pdb
+S:\Project\Git\ClothingConsole\ClothingStore\ClothingStore\obj\Debug\ClothingStore.csprojResolveAssemblyReference.cache
+S:\Project\Git\ClothingConsole\ClothingStore\ClothingStore\obj\Debug\ClothingStore.exe
+S:\Project\Git\ClothingConsole\ClothingStore\ClothingStore\obj\Debug\ClothingStore.pdb

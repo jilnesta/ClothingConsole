@@ -13,19 +13,18 @@ namespace ClothingStore.Command
         private int cmd_color;
         private int cmd_size;
         private int total_price = 0;
-       
+
 
         /*
         * print menu choose product
         */
-        private void PrintMenuProduct ()
+        private void PrintMenuProduct()
         {
             Console.WriteLine("---Buy Board---");
             Console.WriteLine("Select product type:");
             Console.WriteLine("A: T-Shirt ");
             Console.WriteLine("B: Dress Shirt ");
-
-
+            Console.WriteLine("R: Back to main ");
         }
 
         /*
@@ -36,8 +35,7 @@ namespace ClothingStore.Command
             Console.WriteLine("Select color :");
             Console.WriteLine("1: Red ");
             Console.WriteLine("2: Blue ");
-
-
+            Console.WriteLine("0: Back to main ");
         }
 
         /*
@@ -48,8 +46,7 @@ namespace ClothingStore.Command
             Console.WriteLine("Select size :");
             Console.WriteLine("1: S ");
             Console.WriteLine("2: M ");
-
-
+            Console.WriteLine("0: Back to main ");
         }
 
 
@@ -59,11 +56,11 @@ namespace ClothingStore.Command
         */
         private int RunCommandSelectProductType()
         {
-            cmd_product= Console.ReadLine().ToUpper();
+            cmd_product = Console.ReadLine().ToUpper();
 
             bool invalid = false;
 
-            int type_product=0;
+            int type_product = 1;
 
             // perform each command based on user input
             switch (cmd_product)
@@ -76,13 +73,18 @@ namespace ClothingStore.Command
                 case "B":
                     type_product = 2;
                     break;
+                case "R":
+                    InventorySystem sys = new InventorySystem();
+                    sys.PrintWelcome();
+                    sys.RequestCommand();
+                    break;
 
                 default:
                     invalid = true;
                     Console.WriteLine("Command {0} is not recongnized. Please try again.", cmd_product);
                     break;
             }
-            if(invalid)
+            if (invalid)
             {
                 RunCommandSelectProductType();
             }
@@ -99,7 +101,7 @@ namespace ClothingStore.Command
             int.TryParse(Console.ReadLine(), out cmd_color);
 
             bool invalid = false;
-            int type_color=0;
+            int type_color = 0;
             // perform each command based on user input
             switch (cmd_color)
             {
@@ -110,6 +112,12 @@ namespace ClothingStore.Command
 
                 case 2:
                     type_color = 2;
+                    break;
+
+                case 0:
+                    InventorySystem sys = new InventorySystem();
+                    sys.PrintWelcome();
+                    sys.RequestCommand();
                     break;
 
                 default:
@@ -133,7 +141,7 @@ namespace ClothingStore.Command
             int.TryParse(Console.ReadLine(), out cmd_size);
 
             bool invalid = false;
-            int type_size=0;
+            int type_size = 0;
             // perform each command based on user input
             switch (cmd_size)
             {
@@ -144,6 +152,12 @@ namespace ClothingStore.Command
 
                 case 2:
                     type_size = 2;
+                    break;
+
+                case 0:
+                    InventorySystem sys = new InventorySystem();
+                    sys.PrintWelcome();
+                    sys.RequestCommand();
                     break;
 
                 default:
@@ -182,19 +196,19 @@ namespace ClothingStore.Command
         /*
         * print price 
         */
-        private int PrintPrice (int product)
+        private int PrintPrice(int product)
         {
             int t_price = 0;
             //chekc product price
-            if(product ==1)
+            if (product == 1)
             {
                 t_price = Common.price_buy_tshirt;
             }
-            else if ( product==2)
+            else if (product == 2)
             {
                 t_price = Common.price_buy_dress_shirt;
             }
-           
+
             return t_price;
 
         }
@@ -204,7 +218,7 @@ namespace ClothingStore.Command
         */
         private string PrintColor(int color)
         {
-            string t_color="";
+            string t_color = "";
             // check color
             if (color == 1)
             {
@@ -223,7 +237,7 @@ namespace ClothingStore.Command
         */
         private string PrintSize(int size)
         {
-            string t_size="";
+            string t_size = "";
             // check size
             if (size == 1)
             {
@@ -260,26 +274,15 @@ namespace ClothingStore.Command
                     int price = PrintPrice(product);
                     total_price += price;
                     PrintProduct(product, color, size);
-                    Console.WriteLine("Total Price: {0}", total_price);
+                    Console.WriteLine("\n-Total Price: {0}", total_price);
                     cki = Console.ReadKey(false);
                 }
                 while (cki.Key != ConsoleKey.Escape);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-            
-            
-
         }
-
-
-
-
-        
-
-
-
     }
 }
